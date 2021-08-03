@@ -1,0 +1,6 @@
+{
+  "name": "MetricsPanel",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./MetricsPanel.js"
+}

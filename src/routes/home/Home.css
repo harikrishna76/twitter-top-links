@@ -1,12 +1,21 @@
 @import '../../components/variables.css';
 
-.root {
-  padding-left: 20px;
-  padding-right: 20px;
+.root input {
+  /* background: red; */
+  width: 70%;
+  border: 0;
+  height: 1.5rem;
+  border-radius: 0.5rem;
+  background: var(--greyBg);
+  padding: 0.5rem 1rem;
+}
+
+.root input:focus,
+.root input:active {
+  border: 0;
+  outline: 0;
 }
 
 .container {
-  margin: 0 auto;
-  padding: 0 0 40px;
-  max-width: var(--max-content-width);
+  /* max-width: var(--max-content-width); */
 }

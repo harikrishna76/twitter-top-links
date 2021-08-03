@@ -33,7 +33,7 @@ export default function Html({
           />
         ))}
       </head>
-      <body>
+      <body style={{ display: 'none' }}>
         <div id="app" dangerouslySetInnerHTML={{ __html: children }} />
         <script
           dangerouslySetInnerHTML={{ __html: `window.App=${serialize(app)}` }}

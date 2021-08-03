@@ -3,7 +3,7 @@
 .root {
   background: #333;
   color: #fff;
-  height: var(--footer-height);
+  height: var(--footerHeight);
   display: flex;
   align-items: center;
 }

@@ -43,7 +43,7 @@ module.exports = {
     'no-console': [
       'error',
       {
-        allow: ['warn', 'error', 'info'],
+        allow: ['warn', 'error', 'info', 'log'],
       },
     ],
 
@@ -91,6 +91,10 @@ module.exports = {
 
     'react/forbid-prop-types': 'off',
     'react/destructuring-assignment': 'off',
+    'no-underscore-dangle': [
+      'error',
+      { allow: ['_id', '_message', '_json', 'max_id', '_doc'] },
+    ],
   },
 
   settings: {

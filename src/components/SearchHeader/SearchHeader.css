@@ -1,0 +1,8 @@
+.root {
+  height: var(--headerHeight);
+  border-bottom: 1px solid var(--greyBg);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}

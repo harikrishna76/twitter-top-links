@@ -1,18 +1,20 @@
 @import '../../components/variables.css';
 
 .root {
-  padding-left: 20px;
-  padding-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 .container {
-  margin: 0 auto;
-  padding: 0 0 40px;
-  max-width: 380px;
-}
-
-.lead {
-  font-size: 1.25em;
+  min-width: 400px;
+  min-height: 350px;
+  border: 2px solid var(--greyBg);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .formGroup {
@@ -58,7 +60,7 @@
 
 .icon {
   display: inline-block;
-  margin: -2px 12px -2px 0;
+  margin: 0 8px;
   width: 20px;
   height: 20px;
   vertical-align: middle;

@@ -9,7 +9,7 @@
    * Layout
    * ======================================================================== */
 
-  --max-content-width: 1000px;
+  --max-content-width: 1100px;
 
   /*
    * Media queries breakpoints
@@ -19,8 +19,8 @@
   --screen-sm-min: 768px;  /* Small screen / tablet */
   --screen-md-min: 992px;  /* Medium screen / desktop */
   --screen-lg-min: 1200px; /* Large screen / wide desktop */
-
-
-  --header-height: 78px;
-  --footer-height: 60px;
+  --headerHeight: 70px;
+  --footerHeight: 60px;
+  --brandColor: #55acee;
+  --greyBg: rgb(239, 243, 244);
 }

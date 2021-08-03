@@ -1,0 +1,6 @@
+{
+  "name": "ProfileStrip",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./ProfileStrip.js"
+}

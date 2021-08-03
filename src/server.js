@@ -1,22 +1,23 @@
 import path from 'path';
 import express from 'express';
+import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-import expressJwt, { UnauthorizedError as Jwt401Error } from 'express-jwt';
-import nodeFetch from 'node-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 import PrettyError from 'pretty-error';
+import mongoose from './server/mongoose';
+import publicApi from './server/api/public';
+import api from './server/api';
 import App from './components/App';
 import Html from './components/Html';
 import { ErrorPageWithoutStyle } from './routes/error/ErrorPage';
 import errorPageStyle from './routes/error/ErrorPage.css';
-import createFetch from './createFetch';
-import passport from './passport';
+import passport from './server/passport';
 import router from './router';
 // import assets from './asset-manifest.json'; // eslint-disable-line import/no-unresolved
 import chunks from './chunk-manifest.json'; // eslint-disable-line import/no-unresolved
-import config from './config';
+import config from './server/config';
 
 process.on('unhandledRejection', (reason, p) => {
   console.error('Unhandled Rejection at:', p, 'reason:', reason);
@@ -33,6 +34,9 @@ global.navigator.userAgent = global.navigator.userAgent || 'all';
 
 const app = express();
 
+// connect to mongodb
+mongoose.connect(config.databaseUrl);
+
 //
 // If you are using proxy from external machine, you can set TRUST_PROXY env
 // Default is to trust proxy headers only from loopback interface.
@@ -47,28 +51,23 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-//
-// Authentication
-// -----------------------------------------------------------------------------
 app.use(
-  expressJwt({
-    secret: config.auth.jwt.secret,
-    credentialsRequired: false,
-    getToken: req => req.cookies.id_token,
+  session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false },
   }),
 );
-// Error handler for express-jwt
-app.use((err, req, res, next) => {
-  // eslint-disable-line no-unused-vars
-  if (err instanceof Jwt401Error) {
-    console.error('[express-jwt-error]', req.cookies.id_token);
-    // `clearCookie`, otherwise user can't use web-app until cookie expires
-    res.clearCookie('id_token');
-  }
-  next(err);
-});
 
+// Register passport service
 app.use(passport.initialize());
+
+// public apis
+publicApi(app);
+
+// secure apis
+api(app);
 
 //
 // Register server-side rendering middleware
@@ -84,19 +83,13 @@ app.get('*', async (req, res, next) => {
       styles.forEach(style => css.add(style._getCss()));
     };
 
-    // Universal HTTP client
-    const fetch = createFetch(nodeFetch, {
-      baseUrl: config.api.serverUrl,
-      cookie: req.headers.cookie,
-    });
-
     // Global (context) variables that can be easily accessed from any React component
     // https://facebook.github.io/react/docs/context.html
     const context = {
-      fetch,
       // The twins below are wild, be careful!
       pathname: req.path,
       query: req.query,
+      appName: config.appName,
     };
 
     const route = await router.resolve(context);
@@ -128,7 +121,8 @@ app.get('*', async (req, res, next) => {
 
     data.scripts = Array.from(scripts);
     data.app = {
-      apiUrl: config.api.clientUrl,
+      apiUrl: config.serviceUrl,
+      appName: config.appName,
     };
 
     const html = ReactDOM.renderToStaticMarkup(<Html {...data} />);

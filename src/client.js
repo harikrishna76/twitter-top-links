@@ -1,22 +1,10 @@
-/**
- * React Starter Kit (https://www.reactstarterkit.com/)
- *
- * Copyright © 2014-present Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
-import 'whatwg-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import deepForceUpdate from 'react-deep-force-update';
 import queryString from 'query-string';
-import { createPath } from 'history';
 import App from './components/App';
-import createFetch from './createFetch';
-import history from './history';
-import { updateMeta } from './DOMUtils';
+import history from './helpers/history';
+import { updateMeta } from './helpers/DOMUtils';
 import router from './router';
 
 // Enables critical path CSS rendering
@@ -32,10 +20,7 @@ const insertCss = (...styles) => {
 // Global (context) variables that can be easily accessed from any React component
 // https://facebook.github.io/react/docs/context.html
 const context = {
-  // Universal HTTP client
-  fetch: createFetch(fetch, {
-    baseUrl: window.App.apiUrl,
-  }),
+  appName: window.App.appName,
 };
 
 const container = document.getElementById('app');
@@ -84,6 +69,7 @@ async function onLocationChange(location, action) {
       </App>,
       container,
       () => {
+        document.body.style.display = 'block';
         if (isInitialRender) {
           // Switch off the native scroll restoration behavior and handle it manually
           // https://developers.google.com/web/updates/2015/09/history-api-scroll-restoration
@@ -126,12 +112,6 @@ async function onLocationChange(location, action) {
         // or scroll to the given #hash anchor
         // or scroll to top of the page
         window.scrollTo(scrollX, scrollY);
-
-        // Google Analytics tracking. Don't send 'pageview' event after
-        // the initial rendering, as it was already sent
-        if (window.ga) {
-          window.ga('send', 'pageview', createPath(location));
-        }
       },
     );
   } catch (error) {

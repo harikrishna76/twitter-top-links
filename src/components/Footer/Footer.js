@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <div className={s.root}>
       <div className={s.container}>
-        <span className={s.text}>© Your Company</span>
+        <span className={s.text}>© Twitter Top Links</span>
         <span className={s.spacer}>·</span>
         <Link className={s.link} to="/">
           Home

@@ -1,0 +1,14 @@
+@import '../variables.css';
+
+:root {
+  --metricsPanelWidth: 250px;
+}
+
+.root {
+  color: #000;
+  padding: 1rem;
+  min-width: var(--metricsPanelWidth);
+  max-width: var(--metricsPanelWidth);
+  min-height: calc(100vh - 2rem);
+  position: static;
+}

@@ -3,16 +3,27 @@
 // The top-level (parent) route
 const routes = {
   path: '',
+  defaultPath: {
+    path: '/login',
+    load: () => import(/* webpackChunkName: 'home' */ './home'),
+  },
 
   // Keep in mind, routes are evaluated in order
   children: [
     {
+      authenticate: true,
       path: '',
       load: () => import(/* webpackChunkName: 'home' */ './home'),
     },
     {
+      authenticate: false,
       path: '/login',
       load: () => import(/* webpackChunkName: 'login' */ './login'),
+    },
+    {
+      authenticate: false,
+      path: '/authenticate/:token',
+      load: () => import(/* webpackChunkName: 'login' */ './authenticate'),
     },
     // Wildcard routes, e.g. { path: '(.*)', ... } (must go last)
     {
@@ -21,12 +32,12 @@ const routes = {
     },
   ],
 
-  async action({ next }) {
+  async action({ next, appName }) {
     // Execute each child route until one of them return the result
     const route = await next();
 
     // Provide default values for title, description etc.
-    route.title = `${route.title || 'Untitled Page'} - www.reactstarterkit.com`;
+    route.title = `${route.title || 'Untitled Page'} - ${appName}`;
     route.description = route.description || '';
 
     return route;
