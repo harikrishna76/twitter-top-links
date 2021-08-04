@@ -43,7 +43,7 @@ export default function Home() {
   };
 
   const populateTweets = async () => {
-    if (task.finished || tweetsGenerated) {
+    if (tweetsGenerated) {
       if (
         !fetchingNewTweets &&
         tweetsPagination.totalFetched < tweetsPagination.totalCount
@@ -122,7 +122,7 @@ export default function Home() {
 
   useEffect(() => {
     populateTweets();
-  }, [task, tweetsGenerated, fetchMore]);
+  }, [tweetsGenerated, fetchMore]);
 
   const renderTweets = () => {
     if (tweets && tweets.length === 0) {
