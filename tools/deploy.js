@@ -26,7 +26,7 @@ import run from './run';
 const remote = {
   name: 'heroku',
   url: 'https://git.heroku.com/assembly-twitter-top-links.git',
-  branch: 'main',
+  branch: 'master',
   website: 'https://assembly-twitter-top-links.herokuapp.com/',
 };
 
