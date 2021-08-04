@@ -1,0 +1,68 @@
+@import '../../components/variables.css';
+
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.container {
+  min-width: 400px;
+  min-height: 350px;
+  border: 2px solid var(--greyBg);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.button {
+  display: block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 10px 16px;
+  width: 100%;
+  outline: 0;
+  border: 1px solid #373277;
+  border-radius: 0;
+  background: #373277;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 1.3333333;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: rgba(54, 50, 119, 0.8);
+}
+
+.button:focus {
+  border-color: #0074c2;
+  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);
+}
+
+.twitter {
+  border-color: #55acee;
+  background: #55acee;
+  composes: button;
+}
+
+.twitter:hover {
+  background: #2795e9;
+}
+
+.icon {
+  display: inline-block;
+  margin: 0 8px;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  fill: currentColor;
+}

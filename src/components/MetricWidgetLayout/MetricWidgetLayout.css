@@ -1,0 +1,43 @@
+.root {
+  border: 1px solid var(--greyBg);
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.greyVersion {
+  background: var(--greyBg);
+}
+
+.header,
+.collapseToggle {
+  border-bottom: 1px solid var(--greyBg);
+  min-height: 3rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.greyVersion .header {
+  border-color: lightgray;
+}
+
+.body {
+  display: flex;
+  align-items: flex-start;
+}
+
+.loading {
+  min-height: 150px;
+  align-items: center;
+  justify-content: center;
+}
+
+.collapseToggle {
+  min-height: 2.5rem;
+  border: 0;
+  color: var(--brandColor);
+  cursor: pointer;
+  font-size: 1rem;
+}

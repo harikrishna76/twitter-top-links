@@ -1,0 +1,4 @@
+{
+  "name": "UserStatsWidget",
+  "main": "./UserStatsWidget.js"
+}

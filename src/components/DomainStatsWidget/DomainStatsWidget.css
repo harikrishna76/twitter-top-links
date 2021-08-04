@@ -1,0 +1,24 @@
+.content {
+  width: 100%;
+}
+
+.stripItem {
+  padding: 0 1rem;
+  border-bottom: 1px solid lightgray;
+  height: 50px;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  font-size: 0.85rem;
+  justify-content: center;
+}
+
+.stripItem:last-child {
+  border-bottom: 0;
+}
+
+.stripItem a {
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}

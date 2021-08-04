@@ -1,0 +1,31 @@
+.root {
+  /* display: flex; */
+  border-bottom: 1px solid var(--greyBg);
+  padding: 1rem;
+}
+
+.root:hover {
+  background: var(--greyBg);
+}
+
+.root .body {
+  margin-top: 1rem;
+  padding-left: 45px;
+}
+
+.urls {
+  margin: 1rem 0;
+}
+
+.urls div {
+  margin-bottom: 0.5rem;
+}
+
+.hashtags a {
+  margin-right: 1rem;
+}
+
+.location {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+}

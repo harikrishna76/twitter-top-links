@@ -1,0 +1,40 @@
+.profileStrip {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #000 !important;
+  text-decoration: none;
+}
+
+.profileStrip:hover .displayName {
+  text-decoration: underline;
+}
+
+.profileStrip:hover {
+  cursor: pointer;
+}
+
+.profileStrip img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.details div {
+  margin-bottom: 2px;
+}
+
+.userName {
+  font-size: 0.85rem;
+}
+
+.bannerStyle {
+  flex-direction: column;
+}
+
+.bannerStyle img {
+  height: 100px;
+  width: 100px;
+  margin-bottom: 1rem;
+}
