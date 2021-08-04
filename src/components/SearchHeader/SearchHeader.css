@@ -1,8 +1,82 @@
 .root {
-  height: var(--headerHeight);
   border-bottom: 1px solid var(--greyBg);
   display: flex;
   align-items: center;
+  flex-direction: column;
+  padding: 1rem 2rem;
+}
+
+.inputAndFilter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
-  justify-content: center;
+}
+
+.inputAndFilter input {
+  display: flex;
+  flex-grow: 1;
+}
+
+.root img {
+  margin-left: 2rem;
+  cursor: pointer;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.locationFilters {
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.locationFilters .filters {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filters input {
+  min-width: 1rem;
+  min-height: 1rem;
+  height: 1rem;
+  width: 1rem;
+  margin-right: 4px;
+}
+
+.filterItem {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  min-width: 50%;
+  max-width: 50%;
+  padding: 0.25rem 0;
+}
+
+.filterItem label {
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.actionButtons {
+  margin-top: 1rem;
+}
+
+.actionButtons button {
+  width: 100px;
+  padding: 0.5rem;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.actionButtons button:last-of-type {
+  background: var(--brandColor);
+  color: white;
+  margin-left: 1rem;
+  border: 0;
 }

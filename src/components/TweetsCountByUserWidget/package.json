@@ -1,6 +1,0 @@
-{
-  "name": "TweetsCountByUserWidget",
-  "version": "0.0.0",
-  "private": true,
-  "main": "./TweetsCountByUserWidget.js"
-}

@@ -8,4 +8,4 @@ export async function fetchTweetGeneratorTask() {
     .catch(handleErrors);
 }
 
-export default {};
+export default fetchTweetGeneratorTask;

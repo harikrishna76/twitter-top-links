@@ -3,6 +3,7 @@ export default class BaseController {
     this.allowedQueryParams = [];
     this.service = service;
     this.includeTotalCountInGetAll = false;
+    this.parsableQueryParams = [];
   }
 
   create = async (req, res) => {
@@ -23,7 +24,11 @@ export default class BaseController {
       });
       let data = null;
       if (this.includeTotalCountInGetAll) {
+        delete queryFields.skip;
+        delete queryFields.limit;
+        console.log('includeTotalCountInGetAll', queryFields);
         const totalCount = await this.service.model.countDocuments({
+          ...queryFields,
           userId: req.user._id,
         });
         data = { rows: allDocs, totalCount };
@@ -63,6 +68,9 @@ export default class BaseController {
         queryFields[field] = { $in: queryFields[field] };
       }
     });
+    if (this.customizeQueryFields) {
+      return this.customizeQueryFields(queryFields);
+    }
     return queryFields;
   };
 

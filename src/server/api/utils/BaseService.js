@@ -27,6 +27,7 @@ export default class BaseService {
     if (this.defaultSort) {
       options.sort = this.defaultSort;
     }
+    console.log('queryFields', queryFields);
     return this.model
       .find(queryFields, null, options)
       .select(this.sharableFields.join(' '))

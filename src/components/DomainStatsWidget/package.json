@@ -1,6 +1,4 @@
 {
   "name": "DomainStatsWidget",
-  "version": "0.0.0",
-  "private": true,
   "main": "./DomainStatsWidget.js"
 }

@@ -26,8 +26,8 @@ export default function DomainStatsWidget() {
       greyVersion
       loading={loading}
       stripsCount={(domainStats && domainStats.length) || 0}
-      stripHeight={60}
-      maxItemsOnCollapse={3}
+      stripHeight={50}
+      maxItemsOnCollapse={4}
     >
       {!loading && domainStats && (
         <div className={s.content}>

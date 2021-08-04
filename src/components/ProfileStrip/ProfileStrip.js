@@ -8,7 +8,7 @@ export default function ProfileStrip({ profileDetails: details, bannerStyle }) {
 
   const profileDetails = { ...details };
 
-  if (details.name) {
+  if (details && details.name) {
     profileDetails.displayName = details.name;
     profileDetails.username = details.screen_name;
   }

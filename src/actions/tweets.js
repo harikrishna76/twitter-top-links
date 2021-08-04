@@ -1,9 +1,7 @@
-// import axios from 'axios';
 import { fetchAllValuesByModal } from './shared';
-// import { handleErrors, handleResponse } from '../helpers/apiRequests';
 
-export function getTweets(queryParams) {
+export function fetchTweets(queryParams) {
   return fetchAllValuesByModal('tweets', queryParams);
 }
 
-export default getTweets;
+export default fetchTweets;

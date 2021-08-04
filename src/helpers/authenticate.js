@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import { decodeToken } from 'api/utils/passport';
 
 let authorization = null;
 

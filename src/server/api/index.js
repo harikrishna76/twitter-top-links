@@ -4,6 +4,7 @@ import users from './users';
 import tasks from './tasks';
 import userStats from './userStats';
 import domainStats from './domainStats';
+import locations from './locations';
 
 export default function api(app) {
   app.use(
@@ -30,5 +31,10 @@ export default function api(app) {
     '/api/domainStats',
     passport.authenticate('jwt', { session: false }),
     domainStats,
+  );
+  app.use(
+    '/api/locations',
+    passport.authenticate('jwt', { session: false }),
+    locations,
   );
 }

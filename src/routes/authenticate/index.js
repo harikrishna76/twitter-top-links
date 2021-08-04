@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import Layout from '../../components/Layout';
 import history from '../../helpers/history';
 
-// import Authenticate from './Login';
-
 const Authenticate = ({ params: { token } = {} }) => {
   console.log('params', token);
 

@@ -10,7 +10,16 @@ import config from '../../config';
 class Controller extends BaseController {
   constructor() {
     super(TweetsService);
-    this.allowedQueryParams = ['text', '_id', 'skip', 'limit', 'hashtags'];
+    this.allowedQueryParams = [
+      'text',
+      '_id',
+      'skip',
+      'limit',
+      'user.location',
+      'entities.hashtags.text',
+      'user',
+    ];
+    this.parsableQueryParams = ['user'];
     const currentDate = new Date();
     this.sevenDaysBefore = new Date(
       currentDate.getTime() - 7 * 24 * 60 * 60 * 1000,
@@ -208,6 +217,17 @@ class Controller extends BaseController {
     await UserStatsService.model.deleteMany({ userId: this.userId });
     await LocationsService.model.deleteMany({ userId: this.userId });
     await DomainStatsService.model.deleteMany({ userId: this.userId });
+  };
+
+  customizeQueryFields = queryFields => {
+    const fields = { ...queryFields };
+    const hashtag = fields['entities.hashtags.text'];
+    if (hashtag) {
+      fields['entities.hashtags.text'] = {
+        $regex: new RegExp(`^${hashtag.toLowerCase()}`, 'i'),
+      };
+    }
+    return fields;
   };
 }
 

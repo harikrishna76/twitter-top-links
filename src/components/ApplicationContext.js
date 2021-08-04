@@ -6,7 +6,6 @@ const ApplicationContext = React.createContext({
   },
 });
 
-// key and is defualtValue
 export function getContext(key, defualtValue = {}) {
   const appContext = useContext(ApplicationContext) || {};
   const context = { ...appContext.context };

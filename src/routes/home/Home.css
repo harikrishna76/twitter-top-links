@@ -1,7 +1,6 @@
 @import '../../components/variables.css';
 
 .root input {
-  /* background: red; */
   width: 70%;
   border: 0;
   height: 1.5rem;
@@ -18,4 +17,9 @@
 
 .container {
   /* max-width: var(--max-content-width); */
+}
+
+.loaderContainer {
+  margin: 2rem 0;
+  text-align: center;
 }
